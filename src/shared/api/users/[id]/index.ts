@@ -1,28 +1,24 @@
+import type { IUsersData } from "@models/user";
+
 import { api } from "@shared/api/instance";
 
 interface IGetUserByIdParams {
   userId: string;
 }
 
-export type TGetUserByIdConfig = TRequestConfig<IGetUserByIdParams>;
+type TGetUserByIdConfig = TRequestConfig<IGetUserByIdParams>;
+
+type TGetUserByIdResponse = IUsersData;
 
 export const getUserById = async ({ params, config }: TGetUserByIdConfig) =>
-  api.get(`/users/${params.userId}`, config);
+  api.get<TGetUserByIdResponse>(`/users/${params.userId}`, config);
 
 interface TPatchUserByIdParams {
-  dto: Partial<{
-    name: string;
-    surName: string;
-    fullName: string;
-    birthDate: Date;
-    telephone: string;
-    employment: string;
-    userAgreement: boolean;
-  }>;
+  dto: Partial<IUsersData>;
   userId: string;
 }
 
-export type TPatchUserByIdConfig = TRequestConfig<TPatchUserByIdParams>;
+type TPatchUserByIdConfig = TRequestConfig<TPatchUserByIdParams>;
 
 export const patchUserById = async ({ params, config }: TPatchUserByIdConfig) =>
   api.patch(

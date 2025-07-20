@@ -1,30 +1,32 @@
+import type { IUsersData } from "@models/user";
+
 import { api } from "@shared/api/instance";
 
-export type TGetUsersConfig = TRequestConfig;
+type TGetUsersConfig = TRequestConfig;
 
-export const getUsers = async ({ config }: TGetUsersConfig) => api.get("/users", config);
+type TGetUsersResponse = IUsersData[];
 
-interface IPostCreateUserParams {
-  name: string;
-  surName: string;
+export const getUsers = async ({ config }: TGetUsersConfig) =>
+  api.get<TGetUsersResponse>("/users", config);
+
+type TPostCreateUserParams = Omit<IUsersData, "id"> & {
   password: string;
-  fullName: string;
-  email: string;
-  birthDate: Date;
-  telephone: string;
-  employment: string;
-  userAgreement: boolean;
+};
+
+type TPostUsersConfig = TRequestConfig<TPostCreateUserParams>;
+
+interface IPostCreateUserResponse {
+  id: string;
+  name: string;
 }
 
-export type TPostUsersConfig = TRequestConfig<IPostCreateUserParams>;
-
 export const postUsers = async ({ params, config }: TPostUsersConfig) =>
-  api.post(
+  api.post<IPostCreateUserResponse>(
     "/users",
     {
       params: {
         ...params,
-        birthDate: params.birthDate.toISOString()
+        birthDate: params.birthDate?.toISOString()
       }
     },
     config

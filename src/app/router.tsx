@@ -1,11 +1,26 @@
 import { createBrowserRouter } from "react-router";
 
+import { createUserRoute } from "@pages/create-user";
+import { indexRoute } from "@pages/home";
+import { loginRoute } from "@pages/login";
+import { updateUserRoute } from "@pages/update-user";
+
+import { PATHS } from "@shared/constants";
+
 import { AppLayout } from "./layouts/AppLayout";
 
-export const unAuthRouter = createBrowserRouter([
+const unAuthRouter = createBrowserRouter([
   {
-    element: <AppLayout />
-  }
+    element: <AppLayout />,
+    children: [indexRoute]
+  },
+  loginRoute
 ]);
 
-export const authRouter = createBrowserRouter([...unAuthRouter.routes]);
+const authRouter = createBrowserRouter([
+  ...unAuthRouter.routes.filter((route) => route.path !== PATHS.LOGIN),
+  createUserRoute,
+  updateUserRoute
+]);
+
+export { authRouter, unAuthRouter };
