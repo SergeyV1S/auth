@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import type { RouteObject } from "react-router";
 
 import type { PATHS } from "@shared/constants";
+import { Spinner } from "@shared/ui";
 
 // Паттерн фабрика
 export const createRoute = (
@@ -11,7 +12,7 @@ export const createRoute = (
   config?: RouteObject
 ): RouteObject => ({
   path,
-  element: <Suspense fallback={<div>Загрузка...</div>}>{component}</Suspense>,
+  element: <Suspense fallback={<Spinner />}>{component}</Suspense>,
   errorElement: <div className=''>Error</div>,
   ...config
 });

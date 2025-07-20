@@ -5,22 +5,18 @@ import { indexRoute } from "@pages/home";
 import { loginRoute } from "@pages/login";
 import { updateUserRoute } from "@pages/update-user";
 
-import { PATHS } from "@shared/constants";
-
 import { AppLayout } from "./layouts/AppLayout";
+
+const baseRoute = [indexRoute];
 
 const unAuthRouter = createBrowserRouter([
   {
     element: <AppLayout />,
-    children: [indexRoute]
+    children: baseRoute
   },
   loginRoute
 ]);
 
-const authRouter = createBrowserRouter([
-  ...unAuthRouter.routes.filter((route) => route.path !== PATHS.LOGIN),
-  createUserRoute,
-  updateUserRoute
-]);
+const authRouter = createBrowserRouter([...baseRoute, createUserRoute, updateUserRoute]);
 
 export { authRouter, unAuthRouter };
