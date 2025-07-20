@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@shared/theme";
 import type { TTheme } from "@shared/theme/ThemeProvider";
 
+import { AuthProvider } from "./context/AuthProvider";
 import { authRouter, unAuthRouter } from "./router";
 
 export interface IProvidersProps {
@@ -13,7 +14,9 @@ export interface IProvidersProps {
 
 export const Providers = ({ theme, isAuth }: IProvidersProps) => (
   <ThemeProvider defaultTheme={theme}>
-    <RouterProvider router={isAuth ? authRouter : unAuthRouter} />
-    <Toaster position='top-center' richColors closeButton />
+    <AuthProvider defaultValue={isAuth}>
+      <RouterProvider router={isAuth ? authRouter : unAuthRouter} />
+      <Toaster position='top-center' richColors closeButton />
+    </AuthProvider>
   </ThemeProvider>
 );

@@ -7,16 +7,21 @@ import { updateUserRoute } from "@pages/update-user";
 
 import { AppLayout } from "./layouts/AppLayout";
 
-const baseRoute = [indexRoute];
+const baseRoutes = [indexRoute];
 
 const unAuthRouter = createBrowserRouter([
   {
     element: <AppLayout />,
-    children: baseRoute
+    children: baseRoutes
   },
   loginRoute
 ]);
 
-const authRouter = createBrowserRouter([...baseRoute, createUserRoute, updateUserRoute]);
+const authRouter = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [...baseRoutes, createUserRoute, updateUserRoute]
+  }
+]);
 
 export { authRouter, unAuthRouter };
