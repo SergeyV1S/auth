@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import { createUserRoute } from "@pages/create-user";
-import { indexRoute } from "@pages/home";
+import { indexRoute } from "@pages/index";
 import { loginRoute } from "@pages/login";
 import { updateUserRoute } from "@pages/update-user";
 

@@ -1,14 +1,10 @@
-import * as React from "react";
+import { cn } from "@shared/lib";
 
-import { cn } from "@shared/lib/cn";
+import { typographyVariants } from "./typography";
 
 const Table = ({ className, ...props }: React.ComponentProps<"table">) => (
-  <div data-slot='table-container' className='relative w-full overflow-x-auto'>
-    <table
-      data-slot='table'
-      className={cn("w-full caption-bottom text-sm", className)}
-      {...props}
-    />
+  <div data-slot='table-container' className='relative w-full overflow-auto'>
+    <table data-slot='table' className={cn("w-full", className)} {...props} />
   </div>
 );
 
@@ -19,7 +15,11 @@ const TableHeader = ({ className, ...props }: React.ComponentProps<"thead">) => 
 const TableBody = ({ className, ...props }: React.ComponentProps<"tbody">) => (
   <tbody
     data-slot='table-body'
-    className={cn("[&_tr:last-child]:border-0", className)}
+    className={cn(
+      "[&_tr:last-child]:border-0",
+      typographyVariants({ variant: "paragraph_14_regular" }),
+      className
+    )}
     {...props}
   />
 );
@@ -36,7 +36,7 @@ const TableRow = ({ className, ...props }: React.ComponentProps<"tr">) => (
   <tr
     data-slot='table-row'
     className={cn(
-      "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
+      "hover:bg-muted/50 data-[state=selected]:bg-muted border-b text-start transition-colors",
       className
     )}
     {...props}
@@ -47,7 +47,8 @@ const TableHead = ({ className, ...props }: React.ComponentProps<"th">) => (
   <th
     data-slot='table-head'
     className={cn(
-      "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "text-foreground p-5 text-start [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      typographyVariants({ variant: "paragraph_16_medium" }),
       className
     )}
     {...props}
@@ -58,19 +59,11 @@ const TableCell = ({ className, ...props }: React.ComponentProps<"td">) => (
   <td
     data-slot='table-cell'
     className={cn(
-      "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "px-2 py-5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
       className
     )}
     {...props}
   />
 );
 
-const TableCaption = ({ className, ...props }: React.ComponentProps<"caption">) => (
-  <caption
-    data-slot='table-caption'
-    className={cn("text-muted-foreground mt-4 text-sm", className)}
-    {...props}
-  />
-);
-
-export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption };
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell };
