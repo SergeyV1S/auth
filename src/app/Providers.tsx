@@ -4,7 +4,8 @@ import { RouterProvider } from "react-router";
 import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@shared/theme";
-import type { TTheme } from "@shared/theme/ThemeProvider";
+import type { TTheme } from "@shared/theme";
+import { TooltipProvider } from "@shared/ui/tooltip";
 
 import { AuthProvider } from "./context";
 import { authRouter, unAuthRouter } from "./router";
@@ -19,8 +20,10 @@ export const Providers = ({ theme, client, isAuth }: IProvidersProps) => (
   <ThemeProvider defaultTheme={theme}>
     <AuthProvider defaultValue={isAuth}>
       <QueryClientProvider client={client}>
-        <RouterProvider router={isAuth ? authRouter : unAuthRouter} />
-        <Toaster position='top-center' richColors closeButton />
+        <TooltipProvider>
+          <RouterProvider router={isAuth ? authRouter : unAuthRouter} />
+          <Toaster position='top-center' richColors closeButton />
+        </TooltipProvider>
       </QueryClientProvider>
     </AuthProvider>
   </ThemeProvider>

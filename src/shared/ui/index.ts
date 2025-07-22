@@ -7,3 +7,4 @@ export * from "./typography";
 export * from "./select";
 export * from "./spinner";
 export * from "./card";
+export * from "./sidebar";

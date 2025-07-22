@@ -1,7 +1,7 @@
 import { LogInIcon, LogOutIcon } from "lucide-react";
 import { Link } from "react-router";
 
-import { useAuthState } from "@app/context/AuthContext";
+import { useAuthState } from "@pages/login/models/AuthContext";
 
 import { PATHS } from "@shared/constants";
 import { LogoIcon } from "@shared/icons";
@@ -13,7 +13,7 @@ export const Header = () => {
   const { isAuth } = useAuthState();
 
   return (
-    <header className='border-b-border container border-b p-6'>
+    <header className='border-b-border w-full border-b py-5'>
       <div className='flex w-full items-center justify-between gap-6'>
         <Link to={PATHS.INDEX}>
           <LogoIcon />

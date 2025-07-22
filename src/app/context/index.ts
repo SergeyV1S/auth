@@ -1,1 +1,1 @@
-export * from "./AuthContext";
+export * from "../../pages/login/models/AuthContext";
