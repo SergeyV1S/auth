@@ -6,3 +6,4 @@ export * from "./table";
 export * from "./typography";
 export * from "./select";
 export * from "./spinner";
+export * from "./card";

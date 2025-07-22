@@ -1,7 +1,7 @@
 import { LogInIcon, LogOutIcon } from "lucide-react";
 import { Link } from "react-router";
 
-import { useAuthState } from "@app/context/AuthProvider";
+import { useAuthState } from "@app/context/AuthContext";
 
 import { PATHS } from "@shared/constants";
 import { LogoIcon } from "@shared/icons";
