@@ -24,6 +24,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      "@tanstack/query/exhaustive-deps": ["off"],
       "react-refresh/only-export-components": ["off"],
       "react/prop-types": ["off"],
       "@typescript-eslint/no-unused-expressions": ["off"],

@@ -8,3 +8,6 @@ export * from "./select";
 export * from "./spinner";
 export * from "./card";
 export * from "./sidebar";
+export * from "./calendar";
+export * from "./popover";
+export * from "./checkbox";

@@ -1,10 +1,12 @@
 import { HomeIcon, UserRoundPlusIcon } from "lucide-react";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
 import { PATHS } from "@shared/constants";
+import { ThemeToggle } from "@shared/theme";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -33,24 +35,27 @@ export const AppSidebar = () => (
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip='Home' asChild>
-                <NavLink to={PATHS.INDEX}>
+                <Link to={PATHS.INDEX}>
                   <HomeIcon className='h-4 w-4' />
                   <span className={typographyVariants()}>Home</span>
-                </NavLink>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
 
             <SidebarMenuItem>
               <SidebarMenuButton tooltip='Create User' asChild>
-                <NavLink to={PATHS.USER_CREATE}>
+                <Link to={PATHS.USER_CREATE}>
                   <UserRoundPlusIcon className='h-4 w-4' />
                   <span className={typographyVariants()}>Create User</span>
-                </NavLink>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
     </SidebarContent>
+    <SidebarFooter>
+      <ThemeToggle />
+    </SidebarFooter>
   </Sidebar>
 );

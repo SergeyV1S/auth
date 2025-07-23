@@ -18,19 +18,10 @@ interface TPatchUserByIdParams {
   userId: string;
 }
 
-type TPatchUserByIdConfig = TRequestConfig<TPatchUserByIdParams>;
+export type TPatchUserByIdConfig = TRequestConfig<TPatchUserByIdParams>;
 
 export const patchUserById = async ({ params, config }: TPatchUserByIdConfig) =>
-  api.patch(
-    `/users/${params.userId}`,
-    {
-      params: {
-        ...params,
-        birthDate: params.dto.birthDate?.toISOString()
-      }
-    },
-    config
-  );
+  api.patch(`/users/${params.userId}`, params.dto, config);
 
 interface IDeleteUserByIdParams {
   userId: string;

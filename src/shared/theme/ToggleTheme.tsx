@@ -17,15 +17,15 @@ export const ThemeToggle = () => {
 
   return (
     <Select value={theme} onValueChange={(value) => setNewTheme(value as TTheme)}>
-      <SelectTrigger arrow={false}>
+      <SelectTrigger arrow={false} className='w-full border-none p-0'>
         {theme === "light" && (
-          <SunIcon className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:-rotate-90' />
+          <SunIcon className='scale-100 rotate-0 transition-all dark:-rotate-90' />
         )}
         {theme === "dark" && (
-          <MoonIcon className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:-rotate-90' />
+          <MoonIcon className='scale-100 rotate-0 transition-all dark:-rotate-90' />
         )}
         {theme === "system" && (
-          <PcCaseIcon className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:-rotate-90' />
+          <PcCaseIcon className='scale-100 rotate-0 transition-all dark:-rotate-90' />
         )}
       </SelectTrigger>
 

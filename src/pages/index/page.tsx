@@ -1,6 +1,8 @@
 import { EditIcon } from "lucide-react";
 import { Link } from "react-router";
 
+import { format } from "date-fns";
+
 import { PATHS } from "@shared/constants";
 import { cn } from "@shared/lib";
 import {
@@ -37,10 +39,12 @@ const IndexPage = () => {
               <TableCell>{user.fullName}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.employment ?? "Unspecified"}</TableCell>
-              <TableCell>{user.birthDate?.getDate() ?? "Unspecified"}</TableCell>
+              <TableCell>
+                {user.birthDate ? format(user.birthDate, "dd.MM.yyyy") : "Unspecified"}
+              </TableCell>
               <TableCell>
                 <Link
-                  to={PATHS.USER_UPDATE}
+                  to={`${PATHS.USER_UPDATE}?userId=${user.id}`}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "hover:text-destructive hover:bg-transparent"

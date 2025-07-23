@@ -24,10 +24,7 @@ export const postUsers = async ({ params, config }: TPostUsersConfig) =>
   api.post<IPostCreateUserResponse>(
     "/users",
     {
-      params: {
-        ...params,
-        birthDate: params.birthDate?.toISOString()
-      }
+      params
     },
     config
   );

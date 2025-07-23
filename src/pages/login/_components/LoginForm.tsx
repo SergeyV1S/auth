@@ -9,7 +9,7 @@ import {
   Input
 } from "@shared/ui";
 
-import { useLoginForm } from "../models";
+import { useLoginForm } from "../hooks";
 
 export const LoginForm = () => {
   const { state, form, functions } = useLoginForm();
