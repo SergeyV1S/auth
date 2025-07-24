@@ -9,11 +9,11 @@ type TGetUsersResponse = IUsersData[];
 export const getUsers = async ({ config }: TGetUsersConfig) =>
   api.get<TGetUsersResponse>("/users", config);
 
-type TPostCreateUserParams = Omit<IUsersData, "id"> & {
-  password: string;
+type TPostCreateUserParams = Omit<IUsersData, "id" | "password"> & {
+  password?: string;
 };
 
-type TPostUsersConfig = TRequestConfig<TPostCreateUserParams>;
+export type TPostUsersConfig = TRequestConfig<TPostCreateUserParams>;
 
 interface IPostCreateUserResponse {
   id: string;
@@ -21,10 +21,4 @@ interface IPostCreateUserResponse {
 }
 
 export const postUsers = async ({ params, config }: TPostUsersConfig) =>
-  api.post<IPostCreateUserResponse>(
-    "/users",
-    {
-      params
-    },
-    config
-  );
+  api.post<IPostCreateUserResponse>("/users", params, config);

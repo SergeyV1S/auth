@@ -8,12 +8,12 @@ import type { IUsersData } from "@models/user";
 import { PATHS, queryClient } from "@shared/constants";
 
 import { usePatchUserByIdMutation } from "../api";
-import { updateUserFormSchema } from "../lib";
-import type { TUpdateUserFormSchema } from "../lib";
+import { userFormSchema } from "../lib";
+import type { TUserFormSchema } from "../lib";
 
 export const useUpdateUserForm = (user: IUsersData) => {
-  const updateUserForm = useForm<TUpdateUserFormSchema>({
-    resolver: zodResolver(updateUserFormSchema),
+  const updateUserForm = useForm<TUserFormSchema>({
+    resolver: zodResolver(userFormSchema),
     defaultValues: { ...user, birthDate: user.birthDate && new Date(user.birthDate) }
   });
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export const useUpdateUserForm = (user: IUsersData) => {
     }
   });
 
-  const updateUser = async (userData: TUpdateUserFormSchema) => {
+  const updateUser = async (userData: TUserFormSchema) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { email, password, ...updateData } = userData;
 
