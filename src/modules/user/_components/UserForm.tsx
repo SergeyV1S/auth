@@ -1,5 +1,6 @@
 import { CalendarIcon } from "lucide-react";
 
+import type { IUsersData } from "@models/user";
 import { format } from "date-fns";
 
 import {
@@ -24,14 +25,21 @@ import {
   typographyVariants
 } from "@shared/ui";
 
-import { useCreateUserForm } from "../hooks";
+import { useCreateUserForm, useUpdateUserForm } from "../hooks";
 
-export const CreateUserForm = () => {
-  const { state, form, functions } = useCreateUserForm();
+interface IUserFormProps {
+  formType: "createUser" | "updateUser";
+  user?: IUsersData;
+}
+
+export const UserForm = ({ formType, user }: IUserFormProps) => {
+  const formHook = formType === "createUser" ? useCreateUserForm : useUpdateUserForm;
+
+  const { state, form, functions } = formHook(user!);
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(functions.createUser)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(functions.submitFunction)} className='space-y-8'>
         <FormField
           control={form.control}
           name='name'
@@ -142,7 +150,11 @@ export const CreateUserForm = () => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder='Password' {...field} />
+                <Input
+                  placeholder='Password'
+                  {...field}
+                  {...(formType === "updateUser" && { disabled: true })}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -155,7 +167,11 @@ export const CreateUserForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='Email' {...field} />
+                <Input
+                  placeholder='Email'
+                  {...field}
+                  {...(formType === "updateUser" && { disabled: true })}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

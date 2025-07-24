@@ -33,5 +33,5 @@ export const useCreateUserForm = () => {
     });
   };
 
-  return { state: { isPending }, form: updateUserForm, functions: { createUser } };
+  return { state: { isPending }, form: updateUserForm, functions: { submitFunction: createUser } };
 };

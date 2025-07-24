@@ -1,6 +1,6 @@
 import { Spinner } from "@shared/ui";
 
-import { UpdateUserForm } from "./_components";
+import { UserForm } from "./_components";
 import { useUpdateUserPage } from "./hooks";
 
 const UpdateUserPage = () => {
@@ -9,7 +9,7 @@ const UpdateUserPage = () => {
   return (
     <>
       {state.isLoading && <Spinner />}
-      {!state.isLoading && state.data && <UpdateUserForm {...state.data} />}
+      {!state.isLoading && state.data && <UserForm formType='updateUser' user={state.data} />}
     </>
   );
 };

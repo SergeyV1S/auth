@@ -1,5 +1,5 @@
-import { CreateUserForm } from "./_components";
+import { UserForm } from "./_components";
 
-const CreateUserPage = () => <CreateUserForm />;
+const CreateUserPage = () => <UserForm formType='createUser' />;
 
 export default CreateUserPage;

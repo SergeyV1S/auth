@@ -40,5 +40,5 @@ export const useUpdateUserForm = (user: IUsersData) => {
     });
   };
 
-  return { state: { isPending }, form: updateUserForm, functions: { updateUser } };
+  return { state: { isPending }, form: updateUserForm, functions: { submitFunction: updateUser } };
 };
