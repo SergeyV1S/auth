@@ -47,7 +47,7 @@ const TableHead = ({ className, ...props }: React.ComponentProps<"th">) => (
   <th
     data-slot='table-head'
     className={cn(
-      "text-foreground p-5 text-start [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "text-foreground px-2 py-5 text-start [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
       typographyVariants({ variant: "paragraph_16_medium" }),
       className
     )}

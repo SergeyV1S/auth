@@ -6,14 +6,14 @@ export const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
   queryCache: new QueryCache({
     onError: (error) => {
-      const { message } = error as AxiosError;
-      toast.error(message ?? "Something went wrong");
+      const { response } = error as AxiosError<{ message: string }>;
+      toast.error(response?.data?.message ?? "Something went wrong");
     }
   }),
   mutationCache: new MutationCache({
     onError: (error) => {
-      const { message } = error as AxiosError;
-      toast.error(message ?? "Something went wrong");
+      const { response } = error as AxiosError<{ message: string }>;
+      toast.error(response?.data?.message ?? "Something went wrong");
     }
   })
 });

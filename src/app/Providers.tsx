@@ -3,6 +3,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router";
 import { Toaster } from "sonner";
 
+import { ThemeProvider } from "@shared/theme";
 import { TooltipProvider } from "@shared/ui/tooltip";
 
 import { AuthProvider } from "./context";
@@ -16,10 +17,12 @@ export interface IProvidersProps {
 export const Providers = ({ client, isAuth }: IProvidersProps) => (
   <AuthProvider defaultValue={isAuth}>
     <QueryClientProvider client={client}>
-      <TooltipProvider>
-        <RouterProvider router={isAuth ? authRouter : unAuthRouter} />
-        <Toaster position='top-center' richColors closeButton />
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <RouterProvider router={isAuth ? authRouter : unAuthRouter} />
+          <Toaster position='top-center' richColors closeButton />
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   </AuthProvider>
 );

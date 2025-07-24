@@ -55,7 +55,13 @@ export const AppSidebar = () => (
       </SidebarGroup>
     </SidebarContent>
     <SidebarFooter>
-      <ThemeToggle />
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton tooltip='Create User' asChild>
+            <ThemeToggle />
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
     </SidebarFooter>
   </Sidebar>
 );

@@ -17,7 +17,7 @@ export const ThemeToggle = () => {
 
   return (
     <Select value={theme} onValueChange={(value) => setNewTheme(value as TTheme)}>
-      <SelectTrigger arrow={false} className='w-full border-none p-0'>
+      <SelectTrigger arrow={false} className='border-none !px-2'>
         {theme === "light" && (
           <SunIcon className='scale-100 rotate-0 transition-all dark:-rotate-90' />
         )}

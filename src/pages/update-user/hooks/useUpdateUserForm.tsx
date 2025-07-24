@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { IUsersData } from "@models/user";
 
-import { PATHS } from "@shared/constants";
+import { PATHS, queryClient } from "@shared/constants";
 
 import { usePatchUserByIdMutation } from "../api";
 import { updateUserFormSchema } from "../lib";
@@ -22,6 +22,7 @@ export const useUpdateUserForm = (user: IUsersData) => {
     options: {
       onSuccess: () => {
         toast.success("Succesfull update!");
+        queryClient.invalidateQueries({ queryKey: ["getUserById", user.id] });
         navigate(PATHS.INDEX);
       }
     }

@@ -17,11 +17,12 @@ const init = async () => {
   const getMeQuery = await queryClient
     .fetchQuery({
       queryKey: ["getMe"],
-      queryFn: () => getMe({})
+      queryFn: () => getMe({}),
+      retry: 0
     })
     .catch(() => ({ data: null }));
 
-  providersProps.isAuth = !!getMeQuery.data;
+  providersProps.isAuth = !!getMeQuery?.data;
 
   createRoot(rootElement).render(<Providers {...providersProps} />);
 };
