@@ -43,6 +43,19 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name='confirmPassword'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password confirm *</FormLabel>
+              <FormControl>
+                <Input placeholder='Password confirm' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button
           className='w-full'
           type='submit'

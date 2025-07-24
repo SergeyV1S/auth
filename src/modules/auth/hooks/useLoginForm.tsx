@@ -25,11 +25,16 @@ export const useLoginForm = () => {
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       email: "",
-      password: ""
+      password: "",
+      confirmPassword: ""
     }
   });
 
-  const login = async (loginData: TLoginFormSchema) => mutateAsync({ params: loginData });
+  const login = async (loginData: TLoginFormSchema) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { confirmPassword, ...necessaryLoginData } = loginData;
+    await mutateAsync({ params: necessaryLoginData });
+  };
 
   return { state: { isPending }, form: loginForm, functions: { login } };
 };
