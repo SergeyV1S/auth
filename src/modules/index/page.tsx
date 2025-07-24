@@ -1,4 +1,4 @@
-import { EditIcon } from "lucide-react";
+import { EditIcon, TrashIcon } from "lucide-react";
 import { Link } from "react-router";
 
 import { format } from "date-fns";
@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { PATHS } from "@shared/constants";
 import { cn } from "@shared/lib";
 import {
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -18,7 +19,7 @@ import {
 import { useIndexPage } from "./hooks";
 
 const IndexPage = () => {
-  const { state } = useIndexPage();
+  const { state, functions } = useIndexPage();
 
   return (
     <Table>
@@ -52,6 +53,16 @@ const IndexPage = () => {
                 >
                   <EditIcon />
                 </Link>
+              </TableCell>
+              <TableCell>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className='hover:text-destructive hover:bg-transparent'
+                  onClick={() => functions.deleteUser(user.id)}
+                >
+                  <TrashIcon />
+                </Button>
               </TableCell>
             </TableRow>
           ))}
