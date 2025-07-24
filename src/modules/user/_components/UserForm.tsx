@@ -1,4 +1,5 @@
 import { CalendarIcon } from "lucide-react";
+import { useEffect } from "react";
 
 import type { IUsersData } from "@models/user";
 import { format } from "date-fns";
@@ -36,6 +37,18 @@ export const UserForm = ({ formType, user }: IUserFormProps) => {
   const formHook = formType === "createUser" ? useCreateUserForm : useUpdateUserForm;
 
   const { state, form, functions } = formHook(user!);
+
+  const name = form.watch("name") ?? "";
+  const surName = form.watch("surName") ?? "";
+
+  useEffect(() => {
+    if (!name || !surName) {
+      form.setValue("fullName", user?.fullName ?? "");
+    }
+    if (name || surName) {
+      form.setValue("fullName", `${name} ${surName}`);
+    }
+  }, [name, surName]);
 
   return (
     <Form {...form}>
