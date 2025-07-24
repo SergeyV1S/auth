@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { toast } from "sonner";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -16,9 +15,6 @@ export const useLoginForm = () => {
   const { isPending, mutateAsync } = usePostLoginMutation({
     options: {
       onSuccess: () => {
-        toast.success("Login is successful!", {
-          description: "We are very glad to see you, have fun"
-        });
         navigate(PATHS.INDEX);
         navigate(0);
       }

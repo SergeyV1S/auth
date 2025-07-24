@@ -43,7 +43,11 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type='submit' disabled={state.isPending || !form.formState.isDirty}>
+        <Button
+          className='w-full'
+          type='submit'
+          disabled={state.isPending || !form.formState.isDirty}
+        >
           Login
         </Button>
       </form>

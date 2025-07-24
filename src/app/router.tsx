@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 
-import { indexRoute } from "@pages/index";
-import { loginRoute } from "@pages/login";
-import { createUserRoute, updateUserRoute } from "@pages/user";
+import { loginRoute } from "@modules/auth";
+import { indexRoute } from "@modules/index";
+import { createUserRoute, updateUserRoute } from "@modules/user";
 
 import { AppLayout } from "./layouts/AppLayout";
 

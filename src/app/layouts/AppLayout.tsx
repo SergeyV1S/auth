@@ -10,7 +10,7 @@ export const AppLayout = () => (
     <AppSidebar />
 
     <SidebarTrigger />
-    <main className='container ml-2 min-h-screen w-full space-y-5'>
+    <main className='container ml-2 min-h-screen w-[calc(100%-100px)] space-y-5'>
       <Header />
       <Outlet />
     </main>
